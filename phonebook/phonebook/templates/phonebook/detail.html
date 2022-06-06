@@ -1,0 +1,31 @@
+<style xmlns="http://www.w3.org/1999/html">
+table {
+border-collapse:collapse
+}
+td, th {
+border:1px solid #ddd;
+padding:8px;
+}
+</style>
+    <H1><font color="Green"> {{phonebook.phonebook_name}} contacts:</font></H1>
+    <table>
+        <tr><td><font color="Red">Name</font></td><td><font color="Red"> Surname </font></td><td><font color="red">Phone number</font></td></tr>
+    {% for contact in phonebook.contact_set.all %}
+        <tr><td>{{contact.contact_name}} </td><td>{{contact.contact_surname}}</td><td>{{contact.contact_phone}}</td></tr>
+        {% endfor %}
+    </table>
+<br>
+<form action="/phonebook/{{ phonebook.id }}/addcontact/" method="post">
+  {%csrf_token%}
+
+    <table><tr><h1> Create new Contact</h1></tr>
+    <tr><td>Name:</td><td><input type="text" name="new"  value=""></td></tr><br>
+    <tr><td>Surname:</td><td><input type="text" name="surname" value=""></td></tr><br>
+    <tr><td>Phone Number</td><td><input type="text" name="phone" value=""></td></tr><br>
+    </table>
+    <input type="submit" value="Create">
+
+    </form>
+
+
+<a href="/phonebook/"> Return to Phonebooks</a>

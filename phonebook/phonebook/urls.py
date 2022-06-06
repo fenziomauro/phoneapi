@@ -9,6 +9,6 @@ urlpatterns =[
     # /phonebook/3/
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     # /phonebook/3/addaddcontact
-    path('<int:pk>/addcontact/', views.addcontact, name='addcontact'),
+    path('<int:phonebook_id>/addcontact/', views.addcontact, name='addcontact'),
 
 ]
